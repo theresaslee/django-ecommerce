@@ -22,6 +22,14 @@ def about_page(request):
 def contact_page(request):
     """When you go to url, takes request and returns response."""
     context = {
-        "title": "Contact Page!"
+        "title": "Contact Page!",
+        "content": "Welcome to the contact page."
     }
-    return render(request, "home_page.html", context)
+
+    if request.method == "POST":
+        print(request.POST)
+        print(request.POST.get('fullname'))
+        print(request.POST.get('email'))
+        print(request.POST.get('content'))
+
+    return render(request, "contact/view.html", context)

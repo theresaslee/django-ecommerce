@@ -20,6 +20,11 @@ class ContactForm(forms.Form):
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
-        if not "gmail.com" in email:
+        if "gmail.com" not in email:
             raise forms.ValidationError("Email has to be gmail.com")
         return email
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
